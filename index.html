@@ -4,506 +4,781 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para mi Princesa ❤️</title>
+<title>Para mi princesita ❤️</title>
 
 <style>
 :root {
-    --pink: #ff7da8;
-    --purple: #a78bfa;
-    --glass: rgba(255,255,255,0.10);
+  --pink: #ff7da8;
+  --purple: #a78bfa;
+  --glass: rgba(255,255,255,.07);
 }
 
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    background: #07030d;
-    color: white;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
+  margin: 0;
+  min-height: 100vh;
+  background: #07030d;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
 }
 
 header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10, 4, 18, 0.88);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    padding: 16px 12px;
-    text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(10,5,18,.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #ffffff15;
 }
 
-header h1 {
-    color: var(--pink);
-    margin: 0 0 14px;
-    font-size: clamp(22px, 5vw, 32px);
+.nav {
+  max-width: 1100px;
+  margin: auto;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+.logo {
+  color: var(--pink);
+  font-weight: bold;
+  white-space: nowrap;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 25px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    transition: 0.3s;
+.menu {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-nav a:hover {
-    background: var(--pink);
-    color: #240817;
-    transform: translateY(-2px);
+.menu button, .btn {
+  border: 1px solid #ffffff20;
+  border-radius: 25px;
+  padding: 10px 14px;
+  background: var(--glass);
+  color: white;
+  cursor: pointer;
+  transition: .25s;
 }
 
-section {
-    padding: 65px 18px;
-    max-width: 1050px;
-    margin: auto;
-    scroll-margin-top: 150px;
+.menu button:hover,
+.menu button.active,
+.btn:hover {
+  background: var(--pink);
+  color: #180613;
+  transform: translateY(-2px);
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 35px 20px 80px;
+}
+
+.page {
+  display: none;
+  animation: appear .6s ease;
+}
+
+.page.active { display: block; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .hero {
-    min-height: 65vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.hero h2 {
-    font-size: clamp(32px, 7vw, 55px);
-    color: var(--pink);
-    margin-bottom: 12px;
+.eyebrow {
+  color: var(--pink);
+  letter-spacing: 4px;
+  font-size: .8rem;
+  text-transform: uppercase;
 }
 
-.hero p {
-    max-width: 600px;
-    line-height: 1.8;
-    color: #eee0f5;
-    font-size: 17px;
+h1 {
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  line-height: 1.08;
+  margin: 20px 0;
+  background: linear-gradient(120deg, #fff, #ff9fc5, #c4a7ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.heart {
-    font-size: 65px;
-    animation: latido 1.2s infinite;
+h2 {
+  color: #ffabc9;
+  font-size: clamp(1.8rem, 5vw, 3rem);
 }
 
-@keyframes latido {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.18); }
+h3 { color: #ffd3e4; }
+
+p {
+  line-height: 1.85;
+  color: #e2d9eb;
 }
 
-.section-title {
-    text-align: center;
-    color: var(--pink);
-    font-size: clamp(28px, 5vw, 38px);
-    margin-bottom: 12px;
+.lead {
+  max-width: 600px;
+  font-size: 1.1rem;
 }
 
-.section-description {
-    text-align: center;
-    color: #d8cadd;
-    margin-bottom: 30px;
-    line-height: 1.7;
+.btn {
+  display: inline-block;
+  margin: 10px 5px;
+  padding: 13px 22px;
+  background: linear-gradient(120deg, #ff8db5, #c4a1ff);
+  color: #19091d;
+  font-weight: bold;
+  border: none;
 }
 
 .panel {
-    background: var(--glass);
-    border: 1px solid rgba(255,255,255,0.14);
-    backdrop-filter: blur(12px);
-    border-radius: 24px;
-    padding: 28px;
-    box-shadow: 0 0 30px rgba(255,77,109,0.08);
-    text-align: center;
+  background: var(--glass);
+  border: 1px solid #ffffff15;
+  border-radius: 22px;
+  padding: clamp(20px, 5vw, 38px);
+  margin: 20px 0;
+  box-shadow: 0 10px 45px #0004;
+  backdrop-filter: blur(12px);
 }
 
-.panel p {
-    line-height: 1.9;
-    color: #f3eaf5;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
-.main-button {
-    display: inline-block;
-    margin-top: 15px;
-    border: none;
-    border-radius: 25px;
-    padding: 13px 23px;
-    background: linear-gradient(135deg, var(--pink), var(--purple));
-    color: #210b1b;
-    font-weight: bold;
-    font-size: 15px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.3s;
+.memory {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 18px;
+  padding: 20px;
+  background: linear-gradient(145deg, #35203e, #171024);
+  border: 1px solid #ffffff12;
 }
 
-.main-button:hover {
-    transform: scale(1.04);
-}
+.memory span { font-size: 2rem; }
 
-/* GALERÍA DE LAS 14 FOTOS */
+/* GALERÍA: LAS 14 FOTOS REALES */
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 25px;
 }
 
 .photo-card {
-    margin: 0;
-    padding: 8px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 18px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+  margin: 0;
+  padding: 9px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid #ffffff18;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
 }
 
 .photo-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 22px rgba(255,125,168,0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px #ff7da830;
 }
 
 .photo-card img {
-    display: block;
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 12px;
-    cursor: pointer;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 .photo-card figcaption {
-    padding: 12px 5px 7px;
-    text-align: center;
-    color: #ffe0ec;
-    font-size: 14px;
+  padding: 12px 5px 5px;
+  text-align: center;
+  color: #ffe0ec;
+  font-size: .92rem;
 }
 
 /* VISOR DE FOTOS */
 
 .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 500;
-    padding: 20px;
-    background: rgba(0,0,0,0.93);
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 20px;
+  background: rgba(0,0,0,.94);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.lightbox.visible {
-    display: flex;
-}
+.lightbox.visible { display: flex; }
 
 .lightbox img {
-    max-width: 95%;
-    max-height: 78vh;
-    object-fit: contain;
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(255,125,168,0.2);
-}
-
-.close-lightbox {
-    position: absolute;
-    top: 18px;
-    right: 22px;
-    color: white;
-    background: none;
-    border: none;
-    font-size: 38px;
-    cursor: pointer;
+  max-width: 95%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 0 30px #ff7da830;
 }
 
 .lightbox-caption {
-    color: #ffd6e6;
-    margin-top: 15px;
-    text-align: center;
+  text-align: center;
+  color: #ffd6e6;
+  margin-top: 15px;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 42px;
+  cursor: pointer;
+}
+
+.letter {
+  white-space: pre-line;
+  min-height: 180px;
+  font-size: 1.05rem;
+}
+
+.center { text-align: center; }
+
+.big-heart {
+  font-size: clamp(4rem, 12vw, 7rem);
+  animation: heartbeat 1.5s infinite;
+  filter: drop-shadow(0 0 25px #ff4d8d);
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.12); }
 }
 
 footer {
-    padding: 35px 15px;
-    text-align: center;
-    color: #cbb8d3;
-    border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+  padding: 30px 15px;
+  color: #b9a8c8;
+  border-top: 1px solid #ffffff12;
 }
 
-footer span {
-    color: var(--pink);
+footer span { color: var(--pink); }
+
+@media (max-width: 650px) {
+  .nav {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .menu { gap: 5px; }
+
+  .menu button {
+    padding: 9px 10px;
+    font-size: .8rem;
+  }
+
+  main { padding: 20px 14px 50px; }
+
+  .grid, .photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero { min-height: 65vh; }
 }
 
-@media (max-width: 700px) {
-    .gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    .photo-card img {
-        height: 190px;
-    }
-
-    section {
-        padding: 45px 14px;
-    }
-
-    .panel {
-        padding: 20px;
-    }
-
-    nav {
-        gap: 7px;
-    }
-
-    nav a {
-        padding: 9px 12px;
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 380px) {
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .photo-card img {
-        height: 260px;
-    }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Para mi Princesa ❤️</h1>
+<canvas id="stars"></canvas>
 
-    <nav>
-        <a href="#inicio">Inicio 🏠</a>
-        <a href="#carta">Mi carta 💌</a>
-        <a href="#fotos">Fotos 📸</a>
-        <a href="#momentos">Momentos ✨</a>
-    </nav>
+<header>
+  <nav class="nav">
+    <div class="logo">♡ Para mi amor</div>
+
+    <div class="menu">
+      <button class="active" data-page="inicio">Inicio</button>
+      <button data-page="historia">Historia</button>
+      <button data-page="galeria">Galería 📸</button>
+      <button data-page="carta">Mi carta 💌</button>
+      <button data-page="sorpresa">Sorpresa 🎁</button>
+    </div>
+  </nav>
 </header>
 
 <main>
 
-    <!-- INICIO -->
-    <section id="inicio" class="hero">
-        <div class="heart">❤️</div>
-        <h2>Mi Princesa</h2>
+  <!-- INICIO -->
+  <section class="page active" id="inicio">
+    <div class="hero">
+      <div class="eyebrow">Hoy es tu día especial</div>
+      <h1>Feliz cumpleaños,<br>mi princesita ❤️</h1>
+
+      <p class="lead">
+        Entre millones de estrellas, mi parte favorita
+        del universo siempre serás tú.
+        Hoy quiero regalarte algo hecho especialmente para ti. 💗
+      </p>
+
+      <div>
+        <button class="btn" onclick="showPage('historia')">
+          Descubre tu regalo ✨
+        </button>
+        <button class="btn" onclick="toggleMusic()" id="musicBtn">
+          ♫ Escuchar música
+        </button>
+      </div>
+
+      <button class="btn" onclick="showPage('galeria')">
+        Ver nuestros recuerdos 📸
+      </button>
+    </div>
+  </section>
+
+  <!-- HISTORIA -->
+  <section class="page" id="historia">
+    <div class="panel">
+      <div class="eyebrow">Tú y yo</div>
+      <h2>Nuestra historia 💗</h2>
+
+      <p>
+        Mi princesa, nuestra historia tiene momentos bonitos,
+        días difíciles, risas y cosas que hemos tenido que
+        aprender juntos. Cada recuerdo forma parte de lo que somos.
+      </p>
+
+      <div class="grid">
+        <div class="memory">
+          <span>🌷</span>
+          <h3>Un comienzo</h3>
+          <p>Todo lo que nos llevó a encontrarnos.</p>
+        </div>
+
+        <div class="memory">
+          <span>🌙</span>
+          <h3>Nuestros momentos</h3>
+          <p>Esos recuerdos que guardo con cariño.</p>
+        </div>
+
+        <div class="memory">
+          <span>🫶</span>
+          <h3>Lo que superamos</h3>
+          <p>Lo que hemos aprendido estando juntos.</p>
+        </div>
+
+        <div class="memory">
+          <span>✨</span>
+          <h3>Lo que viene</h3>
+          <p>Todos los recuerdos que todavía nos esperan.</p>
+        </div>
+      </div>
+
+      <div class="center">
+        <button class="btn" onclick="showPage('galeria')">
+          Ver nuestras 14 fotos ❤️
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA CON LAS 14 FOTOS -->
+  <section class="page" id="galeria">
+    <div class="panel">
+      <div class="eyebrow">Un pedacito de nosotros</div>
+      <h2>Nuestra pequeña galería 📸</h2>
+
+      <p>
+        Catorce recuerdos que forman parte de nuestra historia.
+        Toca cualquier foto para verla más grande. ❤️
+      </p>
+
+      <div class="photo-grid">
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-01.jpeg" alt="Recuerdo 1" loading="lazy">
+          <figcaption>Un recuerdo bonito ❤️</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-02.jpeg" alt="Recuerdo 2" loading="lazy">
+          <figcaption>Un momento especial 💗</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-03.jpeg" alt="Recuerdo 3" loading="lazy">
+          <figcaption>De esos que se guardan ✨</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-04.jpeg" alt="Recuerdo 4" loading="lazy">
+          <figcaption>Una sonrisa para recordar 🌷</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-05.jpeg" alt="Recuerdo 5" loading="lazy">
+          <figcaption>Un pedacito de felicidad 💕</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-06.jpeg" alt="Recuerdo 6" loading="lazy">
+          <figcaption>Un instante contigo ❤️</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-07.jpeg" alt="Recuerdo 7" loading="lazy">
+          <figcaption>De mis recuerdos favoritos 💗</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-08.jpeg" alt="Recuerdo 8" loading="lazy">
+          <figcaption>Un momento que vale oro ✨</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-09.jpeg" alt="Recuerdo 9" loading="lazy">
+          <figcaption>Para no olvidarlo nunca 🌸</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-10.jpeg" alt="Recuerdo 10" loading="lazy">
+          <figcaption>Otro recuerdo para nosotros 💕</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-11.jpeg" alt="Recuerdo 11" loading="lazy">
+          <figcaption>Un día para sonreír ❤️</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-12.jpeg" alt="Recuerdo 12" loading="lazy">
+          <figcaption>Momentos que se quedan 💗</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-13.jpeg" alt="Recuerdo 13" loading="lazy">
+          <figcaption>Una pequeña historia ✨</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="./fotos/foto-14.jpeg" alt="Recuerdo 14" loading="lazy">
+          <figcaption>Y muchos recuerdos más ❤️</figcaption>
+        </figure>
+
+      </div>
+
+      <div class="center">
+        <button class="btn" onclick="showPage('carta')">
+          Una carta para ti 💌
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTA -->
+  <section class="page" id="carta">
+    <div class="panel">
+      <div class="eyebrow">Unas palabras para ti</div>
+      <h2>Mi carta para ti 💌</h2>
+
+      <p>
+        Hay cosas que a veces me cuesta expresar como quisiera,
+        pero eso no significa que no las sienta.
+      </p>
+
+      <div class="letter" id="letterText"></div>
+
+      <button class="btn" onclick="writeLetter()">
+        Leer mi carta ❤️
+      </button>
+
+      <button class="btn" onclick="showPage('sorpresa')">
+        Mi última sorpresa 🎁
+      </button>
+    </div>
+  </section>
+
+  <!-- SORPRESA -->
+  <section class="page" id="sorpresa">
+    <div class="panel center">
+      <div class="eyebrow">Una última cosita...</div>
+      <h2>Hay algo que quiero decirte</h2>
+
+      <p>
+        Preparé este pequeño universo para recordarte lo especial
+        que eres para mí. ¿Quieres descubrir el último secreto?
+      </p>
+
+      <button class="btn" onclick="revealSurprise()">
+        Abrir mi sorpresa 🎁
+      </button>
+
+      <div id="secret" hidden>
+        <div class="big-heart">❤️</div>
+        <h2>Feliz cumpleaños, mi amor</h2>
+
         <p>
-            Hay personas que hacen que los días sean más bonitos
-            simplemente por existir. Tú eres una de ellas.
-            Este pequeño espacio es para ti, porque eres alguien
-            muy especial para mí. 💗
-        </p>
-        <a class="main-button" href="#fotos">Nuestros recuerdos 📸</a>
-    </section>
+          Deseo que este nuevo año de tu vida te traiga
+          alegría, tranquilidad, sueños cumplidos y muchos
+          motivos para sonreír.
 
-    <!-- CARTA -->
-    <section id="carta">
-        <h2 class="section-title">Una carta para ti 💌</h2>
-        <p class="section-description">
-            Un pequeño rincón para decirte lo que significas para mí.
-        </p>
+          <br><br>
 
-        <div class="panel">
-            <p>Mi princesa, ❤️</p>
+          Gracias por formar parte de mi vida, princesa.
+          Espero poder seguir creando recuerdos bonitos
+          contigo.
 
-            <p>
-                Quería hacerte algo especial, un lugar donde guardar
-                algunas fotos y recuerdos que me hacen pensar en ti.
-                A veces las palabras no alcanzan para explicar lo que
-                alguien significa, pero quería intentarlo de esta manera.
-            </p>
+          <br><br>
 
-            <p>
-                Espero que cuando visites esta página puedas sonreír
-                y recordar lo bonita que es la historia que estamos
-                construyendo. 💗
-            </p>
+          Hoy celebramos tu vida, tu sonrisa y a esa persona
+          tan especial que eres.
 
-            <p>Con mucho cariño, para ti. ❤️</p>
-        </div>
-    </section>
+          <br><br>
 
-    <!-- GALERÍA: CONSERVA LAS 14 IMÁGENES DE GITHUB -->
-    <section id="fotos">
-        <h2 class="section-title">Nuestra galería 📸</h2>
-
-        <p class="section-description">
-            Catorce recuerdos guardados en un mismo lugar.
-            Toca cualquier foto para verla más grande. ❤️
+          Te amo muchísimo. ❤️
         </p>
 
-        <div class="gallery">
+        <p>Con todo mi amor, para ti, mi princesita. 💗</p>
 
-            <figure class="photo-card">
-                <img src="./fotos/foto-01.jpeg" alt="Recuerdo 1" loading="lazy">
-                <figcaption>Un recuerdo bonito ❤️</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-02.jpeg" alt="Recuerdo 2" loading="lazy">
-                <figcaption>Un momento especial 💗</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-03.jpeg" alt="Recuerdo 3" loading="lazy">
-                <figcaption>De esos que se guardan ✨</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-04.jpeg" alt="Recuerdo 4" loading="lazy">
-                <figcaption>Una sonrisa para recordar 🌷</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-05.jpeg" alt="Recuerdo 5" loading="lazy">
-                <figcaption>Un pedacito de felicidad 💕</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-06.jpeg" alt="Recuerdo 6" loading="lazy">
-                <figcaption>Un instante contigo ❤️</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-07.jpeg" alt="Recuerdo 7" loading="lazy">
-                <figcaption>De mis recuerdos favoritos 💗</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-08.jpeg" alt="Recuerdo 8" loading="lazy">
-                <figcaption>Un momento que vale oro ✨</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-09.jpeg" alt="Recuerdo 9" loading="lazy">
-                <figcaption>Para no olvidarlo nunca 🌸</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-10.jpeg" alt="Recuerdo 10" loading="lazy">
-                <figcaption>Otro recuerdo para nosotros 💕</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-11.jpeg" alt="Recuerdo 11" loading="lazy">
-                <figcaption>Un día para sonreír ❤️</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-12.jpeg" alt="Recuerdo 12" loading="lazy">
-                <figcaption>Momentos que se quedan 💗</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-13.jpeg" alt="Recuerdo 13" loading="lazy">
-                <figcaption>Una pequeña historia ✨</figcaption>
-            </figure>
-
-            <figure class="photo-card">
-                <img src="./fotos/foto-14.jpeg" alt="Recuerdo 14" loading="lazy">
-                <figcaption>Y muchos recuerdos más ❤️</figcaption>
-            </figure>
-
-        </div>
-    </section>
-
-    <!-- MOMENTOS -->
-    <section id="momentos">
-        <h2 class="section-title">Nuestros momentos ✨</h2>
-
-        <div class="panel">
-            <p>
-                Lo bonito no siempre está en hacer algo enorme.
-                A veces está en una foto, una conversación,
-                una risa o un momento que parece pequeño,
-                pero termina significando muchísimo. 💗
-            </p>
-
-            <a class="main-button" href="#inicio">
-                Volver al inicio ❤️
-            </a>
-        </div>
-    </section>
+        <button class="btn" onclick="showPage('inicio')">
+          Volver al comienzo ❤️
+        </button>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<!-- VISOR PARA AMPLIAR LAS FOTOS -->
-<div class="lightbox" id="lightbox" aria-modal="true" role="dialog"
-     aria-label="Foto ampliada">
-
-    <button class="close-lightbox" id="closeLightbox"
-            aria-label="Cerrar foto">&times;</button>
-
-    <img id="lightboxImage" src="" alt="Foto ampliada">
-
-    <p class="lightbox-caption" id="lightboxCaption"></p>
+<!-- VISOR DE FOTOS -->
+<div class="lightbox" id="lightbox"
+     role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="close-lightbox" id="closeLightbox"
+          aria-label="Cerrar foto">&times;</button>
+  <img id="lightboxImage" src="" alt="Foto ampliada">
+  <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
 <footer>
-    Hecho con <span>❤️</span> para mi Princesa.
+  Hecho con amor, para mi princesita <span>❤️</span>
 </footer>
 
+<audio id="music" loop preload="none">
+  <source
+    src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-background-112191.mp3"
+    type="audio/mpeg">
+</audio>
+
 <script>
+// NAVEGACIÓN: CADA BOTÓN ABRE SU PROPIA PÁGINA
+
+function showPage(id) {
+  const page = document.getElementById(id);
+  if (!page) return;
+
+  document.querySelectorAll(".page").forEach(section => {
+    section.classList.remove("active");
+  });
+
+  document.querySelectorAll("[data-page]").forEach(button => {
+    button.classList.toggle("active", button.dataset.page === id);
+  });
+
+  page.classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.querySelectorAll("[data-page]").forEach(button => {
+  button.addEventListener("click", () => showPage(button.dataset.page));
+});
+
+// MÚSICA
+
+const music = document.getElementById("music");
+
+async function toggleMusic() {
+  const button = document.getElementById("musicBtn");
+
+  if (music.paused) {
+    try {
+      await music.play();
+      button.textContent = "♫ Pausar música";
+    } catch (error) {
+      button.textContent = "No se pudo reproducir";
+    }
+  } else {
+    music.pause();
+    button.textContent = "♫ Escuchar música";
+  }
+}
+
+// CARTA ANIMADA
+
+const letter = `Mi princesita hermosa ❤️
+
+Hoy quiero desearte un cumpleaños muy bonito.
+Quiero que recuerdes lo mucho que vales y todo
+lo bonito que mereces en tu vida.
+
+Sé que no siempre hago todo perfecto, pero quiero
+seguir aprendiendo a demostrarte lo importante
+que eres para mí, no solamente con palabras,
+sino también con mis acciones.
+
+Gracias por los momentos que compartimos,
+por las risas y por todo lo que seguimos aprendiendo.
+
+Espero que hoy tengas motivos para sonreír
+y que este nuevo año te traiga muchísima felicidad.
+
+Feliz cumpleaños, mi amor.
+Te amo muchísimo. ❤️`;
+
+let typingTimer;
+
+function writeLetter() {
+  const output = document.getElementById("letterText");
+
+  clearTimeout(typingTimer);
+  output.textContent = "";
+
+  let index = 0;
+
+  function type() {
+    if (index >= letter.length) return;
+
+    output.textContent += letter[index];
+    index++;
+
+    typingTimer = setTimeout(type, 28);
+  }
+
+  type();
+}
+
+// SORPRESA
+
+function revealSurprise() {
+  document.getElementById("secret").hidden = false;
+}
+
+// VISOR DE LAS 14 FOTOS
+
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxCaption = document.getElementById("lightboxCaption");
 const closeLightbox = document.getElementById("closeLightbox");
 
-document.querySelectorAll(".photo-card img").forEach((photo) => {
-    photo.addEventListener("click", () => {
-        lightboxImage.src = photo.src;
-        lightboxImage.alt = photo.alt;
+document.querySelectorAll(".photo-card img").forEach(photo => {
+  photo.addEventListener("click", () => {
+    lightboxImage.src = photo.src;
+    lightboxImage.alt = photo.alt;
+    lightboxCaption.textContent =
+      photo.parentElement.querySelector("figcaption").textContent;
 
-        lightboxCaption.textContent =
-            photo.parentElement.querySelector("figcaption").textContent;
-
-        lightbox.classList.add("visible");
-        document.body.style.overflow = "hidden";
-        closeLightbox.focus();
-    });
+    lightbox.classList.add("visible");
+  });
 });
 
 function closePhoto() {
-    lightbox.classList.remove("visible");
-    lightboxImage.src = "";
-    document.body.style.overflow = "";
+  lightbox.classList.remove("visible");
+  lightboxImage.src = "";
 }
 
 closeLightbox.addEventListener("click", closePhoto);
 
-lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) {
-        closePhoto();
-    }
+lightbox.addEventListener("click", event => {
+  if (event.target === lightbox) closePhoto();
 });
 
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && lightbox.classList.contains("visible")) {
-        closePhoto();
-    }
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closePhoto();
 });
+
+// ESTRELLAS ANIMADAS
+
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+let stars = [];
+let animationFrame;
+
+function resizeStars() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvas.width = innerWidth * dpr;
+  canvas.height = innerHeight * dpr;
+  canvas.style.width = innerWidth + "px";
+  canvas.style.height = innerHeight + "px";
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  stars = Array.from({
+    length: Math.min(180, Math.floor(innerWidth / 4))
+  }, () => ({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,
+    r: Math.random() * 1.5 + .3,
+    a: Math.random() * Math.PI * 2,
+    speed: Math.random() * .012 + .003
+  }));
+}
+
+function drawStars() {
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+  for (const star of stars) {
+    star.a += star.speed;
+
+    const opacity = .35 + (Math.sin(star.a) + 1) * .3;
+
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,220,240,${opacity})`;
+    ctx.fill();
+  }
+
+  animationFrame = requestAnimationFrame(drawStars);
+}
+
+window.addEventListener("resize", resizeStars);
+
+resizeStars();
+drawStars();
 </script>
 
 </body>
