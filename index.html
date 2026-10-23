@@ -1,785 +1,920 @@
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para mi princesita ❤️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Piraña ❤️</title>
 
-<style>
-:root {
-  --pink: #ff7da8;
-  --purple: #a78bfa;
-  --glass: rgba(255,255,255,.07);
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+    :root {
+      --pink: #ff8fb3;
+      --light-pink: #ffd6e5;
+      --purple: #c8a2ff;
+      --white: #fff7fb;
+      --glass: rgba(255, 255, 255, 0.08);
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: #07030d;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
-}
+    html { scroll-behavior: smooth; }
 
-#stars {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #090719;
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(10,5,18,.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid #ffffff15;
-}
+    #stars {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      pointer-events: none;
+    }
 
-.nav {
-  max-width: 1100px;
-  margin: auto;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(100,55,150,.24), transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(220,70,130,.15), transparent 50%);
+      z-index: -1;
+      pointer-events: none;
+    }
 
-.logo {
-  color: var(--pink);
-  font-weight: bold;
-  white-space: nowrap;
-}
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 10px;
+      background: rgba(9,7,25,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
 
-.menu {
-  display: flex;
-  gap: 7px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+    nav button {
+      border: 1px solid rgba(255,255,255,.16);
+      color: var(--white);
+      background: rgba(255,255,255,.06);
+      padding: 10px 15px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: .3s;
+    }
 
-.menu button, .btn {
-  border: 1px solid #ffffff20;
-  border-radius: 25px;
-  padding: 10px 14px;
-  background: var(--glass);
-  color: white;
-  cursor: pointer;
-  transition: .25s;
-}
+    nav button:hover,
+    nav button.active {
+      background: linear-gradient(135deg,#e96d9e,#9e79ed);
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
 
-.menu button:hover,
-.menu button.active,
-.btn:hover {
-  background: var(--pink);
-  color: #180613;
-  transform: translateY(-2px);
-}
+    .page {
+      display: none;
+      min-height: calc(100vh - 65px);
+      padding: 55px 20px 70px;
+      animation: fadeIn .6s ease;
+    }
 
-main {
-  max-width: 1000px;
-  margin: auto;
-  padding: 35px 20px 80px;
-}
+    .page.active { display: block; }
 
-.page {
-  display: none;
-  animation: appear .6s ease;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.page.active { display: block; }
+    .container {
+      max-width: 1050px;
+      margin: auto;
+    }
 
-@keyframes appear {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-.hero {
-  min-height: 72vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+    .eyebrow {
+      color: var(--light-pink);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 22px;
+    }
 
-.eyebrow {
-  color: var(--pink);
-  letter-spacing: 4px;
-  font-size: .8rem;
-  text-transform: uppercase;
-}
+    h1 {
+      font-size: clamp(42px,8vw,82px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(120deg,#fff,#ffb5d0,#c9a8ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-h1 {
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
-  line-height: 1.08;
-  margin: 20px 0;
-  background: linear-gradient(120deg, #fff, #ff9fc5, #c4a7ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+    h2 {
+      text-align: center;
+      font-size: clamp(30px,5vw,46px);
+      margin-bottom: 20px;
+      color: var(--light-pink);
+    }
 
-h2 {
-  color: #ffabc9;
-  font-size: clamp(1.8rem, 5vw, 3rem);
-}
+    h3 {
+      color: #ffd2e3;
+      margin-bottom: 10px;
+    }
 
-h3 { color: #ffd3e4; }
+    p { line-height: 1.8; }
 
-p {
-  line-height: 1.85;
-  color: #e2d9eb;
-}
+    .heart {
+      display: inline-block;
+      color: #ff79a8;
+      animation: heartbeat 1.3s infinite;
+    }
 
-.lead {
-  max-width: 600px;
-  font-size: 1.1rem;
-}
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      15% { transform: scale(1.2); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.15); }
+    }
 
-.btn {
-  display: inline-block;
-  margin: 10px 5px;
-  padding: 13px 22px;
-  background: linear-gradient(120deg, #ff8db5, #c4a1ff);
-  color: #19091d;
-  font-weight: bold;
-  border: none;
-}
+    .subtitle {
+      max-width: 680px;
+      color: #ded7ed;
+      font-size: 18px;
+      margin-bottom: 28px;
+    }
 
-.panel {
-  background: var(--glass);
-  border: 1px solid #ffffff15;
-  border-radius: 22px;
-  padding: clamp(20px, 5vw, 38px);
-  margin: 20px 0;
-  box-shadow: 0 10px 45px #0004;
-  backdrop-filter: blur(12px);
-}
+    .btn {
+      display: inline-block;
+      border: none;
+      padding: 13px 22px;
+      border-radius: 28px;
+      background: linear-gradient(135deg,#f07eaa,#9b79ee);
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+      margin: 8px 4px;
+      transition: .3s;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(219,104,173,.15);
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(219,104,173,.3);
+    }
 
-.memory {
-  min-height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 18px;
-  padding: 20px;
-  background: linear-gradient(145deg, #35203e, #171024);
-  border: 1px solid #ffffff12;
-}
+    .music-area {
+      margin-top: 25px;
+      width: 100%;
+      text-align: center;
+    }
 
-.memory span { font-size: 2rem; }
+    #youtubePlayerContainer {
+      display: none;
+      width: 100%;
+      max-width: 560px;
+      margin: 20px auto 0;
+    }
 
-/* GALERÍA: LAS 14 FOTOS REALES */
+    #youtubePlayer {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+    }
 
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 25px;
-}
+    #youtubePlayer iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
 
-.photo-card {
-  margin: 0;
-  padding: 9px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid #ffffff18;
-  border-radius: 18px;
-  overflow: hidden;
-  transition: transform .3s, box-shadow .3s;
-}
+    .note {
+      color: #bfb6d3;
+      font-size: 13px;
+      margin-top: 12px;
+    }
 
-.photo-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px #ff7da830;
-}
+    .section-intro {
+      text-align: center;
+      color: #d5cce5;
+      max-width: 700px;
+      margin: 0 auto 35px;
+    }
 
-.photo-card img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 12px;
-  cursor: pointer;
-}
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
 
-.photo-card figcaption {
-  padding: 12px 5px 5px;
-  text-align: center;
-  color: #ffe0ec;
-  font-size: .92rem;
-}
+    .memory-card {
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 25px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      transition: .3s;
+    }
 
-/* VISOR DE FOTOS */
+    .memory-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,143,179,.5);
+    }
 
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  padding: 20px;
-  background: rgba(0,0,0,.94);
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+    .memory-icon {
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
 
-.lightbox.visible { display: flex; }
+    .memory-card p { color: #e2d9eb; }
 
-.lightbox img {
-  max-width: 95%;
-  max-height: 75vh;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 0 30px #ff7da830;
-}
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
 
-.lightbox-caption {
-  text-align: center;
-  color: #ffd6e6;
-  margin-top: 15px;
-}
+    .photo-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 9px;
+      border-radius: 17px;
+      overflow: hidden;
+      transition: .3s;
+    }
 
-.close-lightbox {
-  position: absolute;
-  top: 12px;
-  right: 20px;
-  border: none;
-  background: transparent;
-  color: white;
-  font-size: 42px;
-  cursor: pointer;
-}
+    .photo-card:hover {
+      transform: translateY(-5px) rotate(-.5deg);
+      border-color: var(--pink);
+    }
 
-.letter {
-  white-space: pre-line;
-  min-height: 180px;
-  font-size: 1.05rem;
-}
+    .photo-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      border-radius: 11px;
+      cursor: zoom-in;
+      background: #211a35;
+    }
 
-.center { text-align: center; }
+    .photo-card figcaption {
+      text-align: center;
+      padding: 13px 5px 8px;
+      color: #f4d9e6;
+      font-size: 14px;
+    }
 
-.big-heart {
-  font-size: clamp(4rem, 12vw, 7rem);
-  animation: heartbeat 1.5s infinite;
-  filter: drop-shadow(0 0 25px #ff4d8d);
-}
+    .letter {
+      max-width: 780px;
+      margin: 30px auto;
+      padding: clamp(22px,5vw,45px);
+      border: 1px solid rgba(255,185,215,.25);
+      border-radius: 22px;
+      background: linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+      box-shadow: 0 20px 70px rgba(0,0,0,.18);
+      backdrop-filter: blur(10px);
+    }
 
-@keyframes heartbeat {
-  50% { transform: scale(1.12); }
-}
+    .letter p {
+      margin-bottom: 18px;
+      color: #f1e8f5;
+      font-size: 17px;
+    }
 
-footer {
-  text-align: center;
-  padding: 30px 15px;
-  color: #b9a8c8;
-  border-top: 1px solid #ffffff12;
-}
+    .letter .signature {
+      color: var(--light-pink);
+      font-style: italic;
+      text-align: right;
+      font-size: 20px;
+      margin-top: 25px;
+    }
 
-footer span { color: var(--pink); }
+    .surprise-box {
+      text-align: center;
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 35px 22px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 24px;
+      background: var(--glass);
+    }
 
-@media (max-width: 650px) {
-  .nav {
-    flex-direction: column;
-    padding: 12px;
-  }
+    #surpriseMessage {
+      display: none;
+      margin-top: 25px;
+      animation: fadeIn .8s ease;
+    }
 
-  .menu { gap: 5px; }
+    #surpriseMessage.show { display: block; }
 
-  .menu button {
-    padding: 9px 10px;
-    font-size: .8rem;
-  }
+    #surpriseMessage p {
+      font-size: 19px;
+      color: #ffe0ec;
+      margin-bottom: 15px;
+    }
 
-  main { padding: 20px 14px 50px; }
+    .big-heart {
+      font-size: 70px;
+      margin: 20px 0;
+      animation: heartbeat 1.3s infinite;
+    }
 
-  .grid, .photo-grid {
-    grid-template-columns: 1fr;
-  }
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,.92);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      cursor: zoom-out;
+    }
 
-  .hero { min-height: 65vh; }
-}
+    .lightbox.show { display: flex; }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-</style>
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(255,143,179,.2);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      color: white;
+      font-size: 38px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #a89cbf;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      nav { gap: 6px; padding: 10px 5px; }
+
+      nav button {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
+
+      .page { padding: 40px 15px 55px; }
+      .photo-card img { height: 230px; }
+      .subtitle { font-size: 16px; }
+    }
+  </style>
 </head>
 
 <body>
+  <canvas id="stars"></canvas>
 
-<canvas id="stars"></canvas>
-
-<header>
-  <nav class="nav">
-    <div class="logo">♡ Para mi amor</div>
-
-    <div class="menu">
-      <button class="active" data-page="inicio">Inicio</button>
-      <button data-page="historia">Historia</button>
-      <button data-page="galeria">Galería 📸</button>
-      <button data-page="carta">Mi carta 💌</button>
-      <button data-page="sorpresa">Sorpresa 🎁</button>
-    </div>
+  <nav>
+    <button class="active" data-page="inicio">Home ✨</button>
+    <button data-page="historia">Our Story 💗</button>
+    <button data-page="galeria">Our Memories 📸</button>
+    <button data-page="carta">My Letter 💌</button>
+    <button data-page="sorpresa">Surprise 🎁</button>
   </nav>
-</header>
 
-<main>
+  <main>
+    <!-- HOME -->
+    <section class="page active" id="inicio">
+      <div class="container hero">
+        <div class="eyebrow">A day as special as you</div>
 
-  <!-- INICIO -->
-  <section class="page active" id="inicio">
-    <div class="hero">
-      <div class="eyebrow">Hoy es tu día especial</div>
-      <h1>Feliz cumpleaños,<br>mi princesita ❤️</h1>
+        <h1>Happy Birthday,<br>My Princess <span class="heart">♥</span></h1>
 
-      <p class="lead">
-        Entre millones de estrellas, mi parte favorita
-        del universo siempre serás tú.
-        Hoy quiero regalarte algo hecho especialmente para ti. 💗
-      </p>
-
-      <div>
-        <button class="btn" onclick="showPage('historia')">
-          Descubre tu regalo ✨
-        </button>
-        <button class="btn" onclick="toggleMusic()" id="musicBtn">
-          ♫ Escuchar música
-        </button>
-      </div>
-
-      <button class="btn" onclick="showPage('galeria')">
-        Ver nuestros recuerdos 📸
-      </button>
-    </div>
-  </section>
-
-  <!-- HISTORIA -->
-  <section class="page" id="historia">
-    <div class="panel">
-      <div class="eyebrow">Tú y yo</div>
-      <h2>Nuestra historia 💗</h2>
-
-      <p>
-        Mi princesa, nuestra historia tiene momentos bonitos,
-        días difíciles, risas y cosas que hemos tenido que
-        aprender juntos. Cada recuerdo forma parte de lo que somos.
-      </p>
-
-      <div class="grid">
-        <div class="memory">
-          <span>🌷</span>
-          <h3>Un comienzo</h3>
-          <p>Todo lo que nos llevó a encontrarnos.</p>
-        </div>
-
-        <div class="memory">
-          <span>🌙</span>
-          <h3>Nuestros momentos</h3>
-          <p>Esos recuerdos que guardo con cariño.</p>
-        </div>
-
-        <div class="memory">
-          <span>🫶</span>
-          <h3>Lo que superamos</h3>
-          <p>Lo que hemos aprendido estando juntos.</p>
-        </div>
-
-        <div class="memory">
-          <span>✨</span>
-          <h3>Lo que viene</h3>
-          <p>Todos los recuerdos que todavía nos esperan.</p>
-        </div>
-      </div>
-
-      <div class="center">
-        <button class="btn" onclick="showPage('galeria')">
-          Ver nuestras 14 fotos ❤️
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALERÍA CON LAS 14 FOTOS -->
-  <section class="page" id="galeria">
-    <div class="panel">
-      <div class="eyebrow">Un pedacito de nosotros</div>
-      <h2>Nuestra pequeña galería 📸</h2>
-
-      <p>
-        Catorce recuerdos que forman parte de nuestra historia.
-        Toca cualquier foto para verla más grande. ❤️
-      </p>
-
-      <div class="photo-grid">
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-01.jpeg" alt="Recuerdo 1" loading="lazy">
-          <figcaption>Un recuerdo bonito ❤️</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-02.jpeg" alt="Recuerdo 2" loading="lazy">
-          <figcaption>Un momento especial 💗</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-03.jpeg" alt="Recuerdo 3" loading="lazy">
-          <figcaption>De esos que se guardan ✨</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-04.jpeg" alt="Recuerdo 4" loading="lazy">
-          <figcaption>Una sonrisa para recordar 🌷</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-05.jpeg" alt="Recuerdo 5" loading="lazy">
-          <figcaption>Un pedacito de felicidad 💕</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-06.jpeg" alt="Recuerdo 6" loading="lazy">
-          <figcaption>Un instante contigo ❤️</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-07.jpeg" alt="Recuerdo 7" loading="lazy">
-          <figcaption>De mis recuerdos favoritos 💗</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-08.jpeg" alt="Recuerdo 8" loading="lazy">
-          <figcaption>Un momento que vale oro ✨</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-09.jpeg" alt="Recuerdo 9" loading="lazy">
-          <figcaption>Para no olvidarlo nunca 🌸</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-10.jpeg" alt="Recuerdo 10" loading="lazy">
-          <figcaption>Otro recuerdo para nosotros 💕</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-11.jpeg" alt="Recuerdo 11" loading="lazy">
-          <figcaption>Un día para sonreír ❤️</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-12.jpeg" alt="Recuerdo 12" loading="lazy">
-          <figcaption>Momentos que se quedan 💗</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-13.jpeg" alt="Recuerdo 13" loading="lazy">
-          <figcaption>Una pequeña historia ✨</figcaption>
-        </figure>
-
-        <figure class="photo-card">
-          <img src="./fotos/foto-14.jpeg" alt="Recuerdo 14" loading="lazy">
-          <figcaption>Y muchos recuerdos más ❤️</figcaption>
-        </figure>
-
-      </div>
-
-      <div class="center">
-        <button class="btn" onclick="showPage('carta')">
-          Una carta para ti 💌
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- CARTA -->
-  <section class="page" id="carta">
-    <div class="panel">
-      <div class="eyebrow">Unas palabras para ti</div>
-      <h2>Mi carta para ti 💌</h2>
-
-      <p>
-        Hay cosas que a veces me cuesta expresar como quisiera,
-        pero eso no significa que no las sienta.
-      </p>
-
-      <div class="letter" id="letterText"></div>
-
-      <button class="btn" onclick="writeLetter()">
-        Leer mi carta ❤️
-      </button>
-
-      <button class="btn" onclick="showPage('sorpresa')">
-        Mi última sorpresa 🎁
-      </button>
-    </div>
-  </section>
-
-  <!-- SORPRESA -->
-  <section class="page" id="sorpresa">
-    <div class="panel center">
-      <div class="eyebrow">Una última cosita...</div>
-      <h2>Hay algo que quiero decirte</h2>
-
-      <p>
-        Preparé este pequeño universo para recordarte lo especial
-        que eres para mí. ¿Quieres descubrir el último secreto?
-      </p>
-
-      <button class="btn" onclick="revealSurprise()">
-        Abrir mi sorpresa 🎁
-      </button>
-
-      <div id="secret" hidden>
-        <div class="big-heart">❤️</div>
-        <h2>Feliz cumpleaños, mi amor</h2>
-
-        <p>
-          Deseo que este nuevo año de tu vida te traiga
-          alegría, tranquilidad, sueños cumplidos y muchos
-          motivos para sonreír.
-
-          <br><br>
-
-          Gracias por formar parte de mi vida, princesa.
-          Espero poder seguir creando recuerdos bonitos
-          contigo.
-
-          <br><br>
-
-          Hoy celebramos tu vida, tu sonrisa y a esa persona
-          tan especial que eres.
-
-          <br><br>
-
-          Te amo muchísimo. ❤️
+        <p class="subtitle">
+          Out of all the people I could have met in this life,
+          I'm grateful that I met you. You may not even realize
+          how much happiness you bring into my world, but I hope
+          I can keep showing you, one little moment at a time. ❤️
         </p>
 
-        <p>Con todo mi amor, para ti, mi princesita. 💗</p>
-
-        <button class="btn" onclick="showPage('inicio')">
-          Volver al comienzo ❤️
+        <button class="btn" onclick="showPage('galeria')">
+          See Our Memories 📸
         </button>
+
+        <div class="music-area">
+          <button class="btn" id="musicBtn" onclick="toggleMusic()">
+            ♫ Listen to Ojitos Lindos ❤️
+          </button>
+
+          <div id="youtubePlayerContainer">
+            <div id="youtubePlayer"></div>
+          </div>
+
+          <p class="note">
+            Our song, just for you. Close your eyes and enjoy this little moment with me. 💕
+          </p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+    <!-- OUR STORY -->
+    <section class="page" id="historia">
+      <div class="container">
+        <h2>Our Story 💗</h2>
 
-<!-- VISOR DE FOTOS -->
-<div class="lightbox" id="lightbox"
-     role="dialog" aria-modal="true" aria-label="Foto ampliada">
-  <button class="close-lightbox" id="closeLightbox"
-          aria-label="Cerrar foto">&times;</button>
-  <img id="lightboxImage" src="" alt="Foto ampliada">
-  <p class="lightbox-caption" id="lightboxCaption"></p>
-</div>
+        <p class="section-intro">
+          Some people come into our lives and slowly become
+          more important than we ever expected. You became that person for me.
+        </p>
 
-<footer>
-  Hecho con amor, para mi princesita <span>❤️</span>
-</footer>
+        <div class="memory-grid">
+          <article class="memory-card">
+            <div class="memory-icon">✨</div>
+            <h3>How It All Started</h3>
+            <p>
+              I never expected one person to become such an important part
+              of my life, but somehow, you did. Little by little, you became
+              someone I care about deeply, someone I think about throughout
+              my day, and someone who can make me smile without even trying.
+            </p>
+          </article>
 
-<audio id="music" loop preload="none">
-  <source
-    src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-background-112191.mp3"
-    type="audio/mpeg">
-</audio>
+          <article class="memory-card">
+            <div class="memory-icon">🥹</div>
+            <h3>Our Little Moments</h3>
+            <p>
+              It's not always about doing something special or having the
+              perfect day. Sometimes, it's the random conversations, the silly
+              things we laugh about, and simply knowing I have you in my life
+              that mean the most to me. Those are the things I never want
+              to take for granted.
+            </p>
+          </article>
 
-<script>
-// NAVEGACIÓN: CADA BOTÓN ABRE SU PROPIA PÁGINA
+          <article class="memory-card">
+            <div class="memory-icon">❤️</div>
+            <h3>What You Mean to Me</h3>
+            <p>
+              I'm not going to pretend we're perfect, because we're not.
+              We've had our moments, our misunderstandings, and days when
+              things haven't been easy. But through it all, you still mean
+              so much to me. I care about you, I care about us, and I want
+              us to keep learning how to love each other better.
+            </p>
+          </article>
+        </div>
 
-function showPage(id) {
-  const page = document.getElementById(id);
-  if (!page) return;
+        <div style="text-align:center;margin-top:35px">
+          <button class="btn" onclick="showPage('carta')">
+            There's Something I Want to Tell You 💌
+          </button>
+        </div>
+      </div>
+    </section>
 
-  document.querySelectorAll(".page").forEach(section => {
-    section.classList.remove("active");
-  });
+    <!-- GALLERY -->
+    <section class="page" id="galeria">
+      <div class="container">
+        <h2>Our Memories 📸</h2>
 
-  document.querySelectorAll("[data-page]").forEach(button => {
-    button.classList.toggle("active", button.dataset.page === id);
-  });
+        <p class="section-intro">
+          Every picture holds a little piece of our story.
+          Tap any photo to see it up close. ❤️
+        </p>
 
-  page.classList.add("active");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
+        <div class="gallery">
+          <figure class="photo-card">
+            <img src="./fotos/foto-01.jpeg" alt="Our memory 1" loading="lazy">
+            <figcaption>A beautiful memory ❤️</figcaption>
+          </figure>
 
-document.querySelectorAll("[data-page]").forEach(button => {
-  button.addEventListener("click", () => showPage(button.dataset.page));
-});
+          <figure class="photo-card">
+            <img src="./fotos/foto-02.jpeg" alt="Our memory 2" loading="lazy">
+            <figcaption>Everything feels special with you ✨</figcaption>
+          </figure>
 
-// MÚSICA
+          <figure class="photo-card">
+            <img src="./fotos/foto-03.jpeg" alt="Our memory 3" loading="lazy">
+            <figcaption>A moment worth remembering 💗</figcaption>
+          </figure>
 
-const music = document.getElementById("music");
+          <figure class="photo-card">
+            <img src="./fotos/foto-04.jpeg" alt="Our memory 4" loading="lazy">
+            <figcaption>My favorite place is with you 🫶</figcaption>
+          </figure>
 
-async function toggleMusic() {
-  const button = document.getElementById("musicBtn");
+          <figure class="photo-card">
+            <img src="./fotos/foto-05.jpeg" alt="Our memory 5" loading="lazy">
+            <figcaption>How lucky I am to have met you 🌙</figcaption>
+          </figure>
 
-  if (music.paused) {
-    try {
-      await music.play();
-      button.textContent = "♫ Pausar música";
-    } catch (error) {
-      button.textContent = "No se pudo reproducir";
+          <figure class="photo-card">
+            <img src="./fotos/foto-06.jpeg" alt="Our memory 6" loading="lazy">
+            <figcaption>Another little piece of us 💞</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="./fotos/foto-07.jpeg" alt="Our memory 7" loading="lazy">
+            <figcaption>Moments I keep close to my heart ❤️</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="./fotos/foto-08.jpeg" alt="Our memory 8" loading="lazy">
+            <figcaption>There is always something to celebrate ✨</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="./fotos/foto-09.jpeg" alt="Our memory 9" loading="lazy">
+            <figcaption>One of my favorite memories 🥰</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="./fotos/foto-10.jpeg" alt="Our memory 10" loading="lazy">
+            <figcaption>A story that is still being written 💗</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="./fotos/foto-11.jpeg" alt="Our memory 11" loading="lazy">
+            <figcaption>My special person 🫶</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="./fotos/foto-12.jpeg" alt="Our memory 12" loading="lazy">
+            <figcaption>One moment, a thousand feelings 💕</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="./fotos/foto-13.jpeg" alt="Our memory 13" loading="lazy">
+            <figcaption>Here's to many more memories 🌷</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="./fotos/foto-14.jpeg" alt="Our memory 14" loading="lazy">
+            <figcaption>And my favorite is having you in my life ❤️</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- LETTER -->
+    <section class="page" id="carta">
+      <div class="container">
+        <h2>A Letter for You 💌</h2>
+
+        <p class="section-intro">
+          Some things deserve to be said slowly and from the heart.
+        </p>
+
+        <article class="letter">
+          <p>My beautiful princess, ❤️</p>
+
+          <p>
+            Happy birthday, baby. I wish I could make you see yourself
+            the way I see you, because maybe then you'd understand just
+            how special you are to me.
+          </p>
+
+          <p>
+            I'm not always the best at expressing everything I feel,
+            and sometimes I don't even realize how my actions come across.
+            I know we don't always understand each other, and we've had
+            moments when things between us have been harder than they should
+            be. But I never want those moments to make you forget that
+            you mean a lot to me.
+          </p>
+
+          <p>
+            I know love isn't just about the good days, the cute messages,
+            or saying "I love you." It's also about listening to each other,
+            being patient, understanding each other's feelings, and actually
+            trying to do better when things get difficult. I want us to keep
+            growing, not just as a couple, but as two people who genuinely
+            want to make each other happy.
+          </p>
+
+          <p>
+            And even with everything we've been through, there are still
+            so many little things about you that make me happy. The thought
+            of making more memories with you, laughing with you over the
+            dumbest things, hearing about your day, and being there for you
+            means more to me than I probably say out loud.
+          </p>
+
+          <p>
+            Today, I hope you feel loved, appreciated, beautiful, and
+            genuinely happy. I hope this new year of your life brings you
+            everything you've been wishing for, because you deserve so many
+            good things.
+          </p>
+
+          <p>
+            I can't promise that every day will be perfect, but I can tell
+            you that what we have matters to me. I want more memories with
+            you, more laughs, more late-night conversations, more little
+            adventures, and more chances to show you how much you mean to me.
+          </p>
+
+          <p>
+            So happy birthday to my beautiful girl, my princess, and the
+            person who has a special place in my heart.
+          </p>
+
+          <p>
+            I hope that when you look back at this little website, you don't
+            just see pictures and words. I hope you remember that someone
+            made this just for you, thinking about you and wanting to make
+            your day a little more special.
+          </p>
+
+          <p><strong>I love you, my princess. Happy birthday, baby. ❤️</strong></p>
+
+          <p class="signature">
+            Always yours. ❤️
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SURPRISE -->
+    <section class="page" id="sorpresa">
+      <div class="container">
+        <h2>One More Thing for You 🎁</h2>
+
+        <p class="section-intro">
+          Before you leave, there's one little gift I want you to open.
+        </p>
+
+        <div class="surprise-box">
+          <div class="big-heart">💝</div>
+
+          <h3 style="font-size:25px;margin-bottom:15px">
+            One last thing, my princess...
+          </h3>
+
+          <p style="color:#d8cce7">
+            I made this with lots of love. Are you ready to see it?
+          </p>
+
+          <button class="btn" onclick="revealSurprise()" id="surpriseBtn">
+            Open Your Gift ❤️
+          </button>
+
+          <div id="surpriseMessage">
+            <div class="big-heart">❤️</div>
+
+            <p>
+              If I could give you one thing in this world, it would be the
+              chance to see yourself through my eyes. Maybe then you'd
+              understand why you're so special to me.
+            </p>
+
+            <p>
+              You're not just someone I love. You're someone I want to keep
+              making memories with, someone I want to laugh with, and someone
+              I want to keep choosing even when life isn't perfect.
+            </p>
+
+            <p>
+              No matter how many birthdays come and go, I hope I get to be
+              part of many more of yours.
+            </p>
+
+            <p>
+              And if you ever wonder how much you mean to me, remember this
+              little surprise. I made it because your happiness matters to me,
+              and because celebrating you is something I wanted to do in my
+              own way.
+            </p>
+
+            <p>
+              Happy birthday, my beautiful princess. ❤️
+            </p>
+
+            <h3 style="margin-top:20px">
+              You, me, and many more memories to come. ♾️
+            </h3>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Made with love, especially for you <span class="heart">♥</span>
+  </footer>
+
+  <!-- PHOTO LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="Close image"
+      onclick="closeLightbox()">×</button>
+    <img id="lightboxImage" src="" alt="Enlarged memory">
+  </div>
+
+  <script>
+    // Navigate between pages
+    function showPage(id) {
+      document.querySelectorAll(".page").forEach(function(page) {
+        page.classList.remove("active");
+      });
+
+      document.querySelectorAll("nav button[data-page]").forEach(function(button) {
+        button.classList.remove("active");
+      });
+
+      const selectedPage = document.getElementById(id);
+      if (selectedPage) selectedPage.classList.add("active");
+
+      const navButton = document.querySelector(
+        'nav button[data-page="' + id + '"]'
+      );
+
+      if (navButton) navButton.classList.add("active");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  } else {
-    music.pause();
-    button.textContent = "♫ Escuchar música";
-  }
-}
 
-// CARTA ANIMADA
+    document.querySelectorAll("nav button[data-page]").forEach(function(button) {
+      button.addEventListener("click", function() {
+        showPage(button.dataset.page);
+      });
+    });
 
-const letter = `Mi princesita hermosa ❤️
+    // Surprise reveal
+    function revealSurprise() {
+      document.getElementById("surpriseMessage").classList.add("show");
+      document.getElementById("surpriseBtn").textContent = "Gift Opened ❤️";
+    }
 
-Hoy quiero desearte un cumpleaños muy bonito.
-Quiero que recuerdes lo mucho que vales y todo
-lo bonito que mereces en tu vida.
+    // Enlarge photos
+    document.querySelectorAll(".photo-card img").forEach(function(img) {
+      img.addEventListener("click", function() {
+        document.getElementById("lightboxImage").src = img.src;
+        document.getElementById("lightbox").classList.add("show");
+      });
+    });
 
-Sé que no siempre hago todo perfecto, pero quiero
-seguir aprendiendo a demostrarte lo importante
-que eres para mí, no solamente con palabras,
-sino también con mis acciones.
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("show");
+    }
 
-Gracias por los momentos que compartimos,
-por las risas y por todo lo que seguimos aprendiendo.
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") closeLightbox();
+    });
 
-Espero que hoy tengas motivos para sonreír
-y que este nuevo año te traiga muchísima felicidad.
+    // Animated stars
+    (function() {
+      const canvas = document.getElementById("stars");
+      const ctx = canvas.getContext("2d");
+      let stars = [];
+      let width = 0;
+      let height = 0;
 
-Feliz cumpleaños, mi amor.
-Te amo muchísimo. ❤️`;
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
 
-let typingTimer;
+        const amount = Math.min(180, Math.floor(width * height / 7000));
+        stars = [];
 
-function writeLetter() {
-  const output = document.getElementById("letterText");
+        for (let i = 0; i < amount; i++) {
+          stars.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 1.5 + 0.3,
+            alpha: Math.random() * 0.7 + 0.2,
+            speed: Math.random() * 0.008 + 0.002
+          });
+        }
+      }
 
-  clearTimeout(typingTimer);
-  output.textContent = "";
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
 
-  let index = 0;
+        stars.forEach(function(star) {
+          star.alpha += star.speed;
 
-  function type() {
-    if (index >= letter.length) return;
+          if (star.alpha > 1 || star.alpha < 0.2) {
+            star.speed *= -1;
+          }
 
-    output.textContent += letter[index];
-    index++;
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(255,225,245," + star.alpha + ")";
+          ctx.fill();
+        });
 
-    typingTimer = setTimeout(type, 28);
-  }
+        requestAnimationFrame(animate);
+      }
 
-  type();
-}
+      window.addEventListener("resize", resize);
+      resize();
+      animate();
+    })();
 
-// SORPRESA
+    // YouTube player for "Ojitos Lindos"
+    let youtubePlayer = null;
+    let playerReady = false;
+    let musicRequested = false;
+    let apiLoading = false;
 
-function revealSurprise() {
-  document.getElementById("secret").hidden = false;
-}
+    const musicButton = document.getElementById("musicBtn");
+    const musicContainer = document.getElementById("youtubePlayerContainer");
 
-// VISOR DE LAS 14 FOTOS
+    function loadYouTubeAPI() {
+      if (apiLoading || window.YT) return;
+      apiLoading = true;
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxCaption = document.getElementById("lightboxCaption");
-const closeLightbox = document.getElementById("closeLightbox");
+      const script = document.createElement("script");
+      script.src = "https://www.youtube.com/iframe_api";
+      document.body.appendChild(script);
+    }
 
-document.querySelectorAll(".photo-card img").forEach(photo => {
-  photo.addEventListener("click", () => {
-    lightboxImage.src = photo.src;
-    lightboxImage.alt = photo.alt;
-    lightboxCaption.textContent =
-      photo.parentElement.querySelector("figcaption").textContent;
+    function onYouTubeIframeAPIReady() {
+      youtubePlayer = new YT.Player("youtubePlayer", {
+        width: "560",
+        height: "315",
+        videoId: "wAjHQXrIj9o",
+        playerVars: {
+          playsinline: 1,
+          rel: 0
+        },
+        events: {
+          onReady: function() {
+            playerReady = true;
+            musicButton.textContent = "♫ Listen to Ojitos Lindos ❤️";
 
-    lightbox.classList.add("visible");
-  });
-});
+            if (musicRequested) {
+              youtubePlayer.playVideo();
+            }
+          },
+          onStateChange: function(event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+              musicButton.textContent = "♫ Pause Ojitos Lindos ❤️";
+            } else if (
+              event.data === YT.PlayerState.PAUSED ||
+              event.data === YT.PlayerState.ENDED
+            ) {
+              musicButton.textContent = "♫ Listen to Ojitos Lindos ❤️";
+            }
+          },
+          onError: function() {
+            musicButton.textContent = "Open Ojitos Lindos on YouTube ↗";
+            musicButton.onclick = function() {
+              window.open(
+                "https://www.youtube.com/watch?v=wAjHQXrIj9o",
+                "_blank",
+                "noopener"
+              );
+            };
+          }
+        }
+      });
+    }
 
-function closePhoto() {
-  lightbox.classList.remove("visible");
-  lightboxImage.src = "";
-}
+    function toggleMusic() {
+      musicContainer.style.display = "block";
+      musicRequested = true;
 
-closeLightbox.addEventListener("click", closePhoto);
+      if (!playerReady) {
+        musicButton.textContent = "Loading Ojitos Lindos...";
+        loadYouTubeAPI();
+        return;
+      }
 
-lightbox.addEventListener("click", event => {
-  if (event.target === lightbox) closePhoto();
-});
-
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") closePhoto();
-});
-
-// ESTRELLAS ANIMADAS
-
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
-let stars = [];
-let animationFrame;
-
-function resizeStars() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-  canvas.width = innerWidth * dpr;
-  canvas.height = innerHeight * dpr;
-  canvas.style.width = innerWidth + "px";
-  canvas.style.height = innerHeight + "px";
-
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-  stars = Array.from({
-    length: Math.min(180, Math.floor(innerWidth / 4))
-  }, () => ({
-    x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight,
-    r: Math.random() * 1.5 + .3,
-    a: Math.random() * Math.PI * 2,
-    speed: Math.random() * .012 + .003
-  }));
-}
-
-function drawStars() {
-  ctx.clearRect(0, 0, innerWidth, innerHeight);
-
-  for (const star of stars) {
-    star.a += star.speed;
-
-    const opacity = .35 + (Math.sin(star.a) + 1) * .3;
-
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,220,240,${opacity})`;
-    ctx.fill();
-  }
-
-  animationFrame = requestAnimationFrame(drawStars);
-}
-
-window.addEventListener("resize", resizeStars);
-
-resizeStars();
-drawStars();
-</script>
-
+      if (youtubePlayer.getPlayerState() === YT.PlayerState.PLAYING) {
+        musicRequested = false;
+        youtubePlayer.pauseVideo();
+      } else {
+        youtubePlayer.playVideo();
+      }
+    }
+  </script>
 </body>
 </html>
