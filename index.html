@@ -196,7 +196,7 @@ section {
     font-size: 14px;
 }
 
-/* FOTO AMPLIADA */
+/* VISOR DE FOTOS */
 
 .lightbox {
     display: none;
@@ -326,27 +326,29 @@ footer span {
         </p>
 
         <div class="panel">
-            <p>
-                Mi princesa, ❤️
-            </p>
+            <p>Mi princesa, ❤️</p>
+
             <p>
                 Quería hacerte algo especial, un lugar donde guardar
                 algunas fotos y recuerdos que me hacen pensar en ti.
                 A veces las palabras no alcanzan para explicar lo que
                 alguien significa, pero quería intentarlo de esta manera.
             </p>
+
             <p>
                 Espero que cuando visites esta página puedas sonreír
                 y recordar lo bonita que es la historia que estamos
                 construyendo. 💗
             </p>
+
             <p>Con mucho cariño, para ti. ❤️</p>
         </div>
     </section>
 
-    <!-- GALERÍA -->
+    <!-- GALERÍA: CONSERVA LAS 14 IMÁGENES DE GITHUB -->
     <section id="fotos">
         <h2 class="section-title">Nuestra galería 📸</h2>
+
         <p class="section-description">
             Catorce recuerdos guardados en un mismo lugar.
             Toca cualquier foto para verla más grande. ❤️
@@ -438,17 +440,24 @@ footer span {
                 una risa o un momento que parece pequeño,
                 pero termina significando muchísimo. 💗
             </p>
-            <a class="main-button" href="#inicio">Volver al inicio ❤️</a>
+
+            <a class="main-button" href="#inicio">
+                Volver al inicio ❤️
+            </a>
         </div>
     </section>
 
 </main>
 
-<!-- VISOR DE FOTOS -->
-<div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
+<!-- VISOR PARA AMPLIAR LAS FOTOS -->
+<div class="lightbox" id="lightbox" aria-modal="true" role="dialog"
+     aria-label="Foto ampliada">
+
     <button class="close-lightbox" id="closeLightbox"
             aria-label="Cerrar foto">&times;</button>
+
     <img id="lightboxImage" src="" alt="Foto ampliada">
+
     <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
@@ -466,16 +475,20 @@ document.querySelectorAll(".photo-card img").forEach((photo) => {
     photo.addEventListener("click", () => {
         lightboxImage.src = photo.src;
         lightboxImage.alt = photo.alt;
+
         lightboxCaption.textContent =
             photo.parentElement.querySelector("figcaption").textContent;
 
         lightbox.classList.add("visible");
+        document.body.style.overflow = "hidden";
+        closeLightbox.focus();
     });
 });
 
 function closePhoto() {
     lightbox.classList.remove("visible");
     lightboxImage.src = "";
+    document.body.style.overflow = "";
 }
 
 closeLightbox.addEventListener("click", closePhoto);
@@ -487,7 +500,7 @@ lightbox.addEventListener("click", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" && lightbox.classList.contains("visible")) {
         closePhoto();
     }
 });
